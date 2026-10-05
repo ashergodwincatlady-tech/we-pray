@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PYN — Learn Python Together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-card">
+      <div class="brand brand-large"><span class="logo-mark">P</span><span>PYN</span></div>
+      <h1>Learn Python. Build things. Meet coders.</h1>
+      <p>A social coding community where lessons lead to real Python projects.</p>
+      <label>Choose a username</label>
+      <input id="username-input" type="text" maxlength="18" placeholder="e.g. PixelCoder" />
+      <button id="start-btn" class="primary-btn">Create my PYN profile</button>
+      <button id="demo-btn" class="secondary-btn">Enter demo</button>
+      <small>No real account is created in this prototype. Your progress is saved only on this device.</small>
+    </div>
+  </div>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand"><span class="logo-mark">P</span><span>PYN</span></div>
+      <nav id="nav">
+        <button class="nav-item active" data-page="home"><span>⌂</span> Home</button>
+        <button class="nav-item" data-page="learn"><span>▤</span> Learn</button>
+        <button class="nav-item" data-page="projects"><span>⌘</span> Projects</button>
+        <button class="nav-item" data-page="community"><span>◉</span> Community</button>
+        <button class="nav-item" data-page="profile"><span>☺</span> You</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-profile">
+          <div class="avatar small" id="sidebar-avatar">🧑🏽‍💻</div>
+          <div><strong id="sidebar-name">Coder</strong><small id="sidebar-level">Level 1</small></div>
+        </div>
+        <button id="signout-btn" class="text-btn">Sign out</button>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="page-eyebrow">PYN COMMUNITY</p>
+          <h2 id="page-title">Home</h2>
+        </div>
+        <div class="top-stats">
+          <div class="stat-pill">🔥 <strong id="streak-count">1</strong> day streak</div>
+          <div class="stat-pill">⭐ <strong id="xp-count">0</strong> XP</div>
+        </div>
+      </header>
+
+      <section id="home" class="page active-page">
+        <div class="hero-card">
+          <div>
+            <p class="eyebrow">WELCOME BACK</p>
+            <h1 id="welcome-title">Ready to code?</h1>
+            <p>Learn one concept, use it immediately, and build something you can show the community.</p>
+            <button class="primary-btn" data-continue="true">Continue learning</button>
+          </div>
+          <div class="hero-code">
+            <span>python</span>
+            <pre><code>name = "PYN"
+
+for day in range(1, 4):
+    print(f"Day {day}: keep building!")</code></pre>
+          </div>
+        </div>
+
+        <div class="section-head"><div><h3>People on PYN</h3><p>Active is a status, not a ranking.</p></div><button class="text-btn" data-go="community">See community</button></div>
+        <div id="people-row" class="people-row"></div>
+
+        <div class="two-col">
+          <div>
+            <div class="section-head"><div><h3>Continue learning</h3><p>Your current Python path.</p></div></div>
+            <div class="continue-card">
+              <div class="lesson-icon">🐍</div>
+              <div class="grow">
+                <div class="space-between"><strong>PYN Fundamentals</strong><span id="progress-label">0%</span></div>
+                <div class="progress"><div id="progress-bar"></div></div>
+                <p id="next-lesson-label">Start with: 10 Fun Facts About Python</p>
+              </div>
+              <button class="circle-btn" data-continue="true">→</button>
+            </div>
+          </div>
+          <div>
+            <div class="section-head"><div><h3>Daily challenge</h3><p>Small wins every day.</p></div></div>
+            <div class="challenge-card">
+              <span class="tag">+20 XP</span>
+              <h4>Make Python say hello</h4>
+              <p>Write one line that prints <strong>Hello PYN!</strong></p>
+              <button id="challenge-btn" class="secondary-btn">Try challenge</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head"><div><h3>Projects</h3><p>The PYN version of game cards: things you can actually build.</p></div><button class="text-btn" data-go="projects">View all</button></div>
+        <div id="home-projects" class="project-grid"></div>
+      </section>
+
+      <section id="learn" class="page">
+        <div class="learn-layout">
+          <div>
+            <div class="section-head"><div><h3>PYN Fundamentals</h3><p>Short explanations. Real code. Tiny challenges.</p></div></div>
+            <a class="practice-link" href="https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer">Use VS Code to practice! ↗</a><div id="lesson-path" class="lesson-path"></div>
+          </div>
+          <aside class="learn-side">
+            <div class="panel sticky">
+              <span class="tag">HOW PYN TEACHES</span>
+              <h3>Learn → change → test → build</h3>
+              <p>Every lesson gives you a simple idea, working code, a mini challenge, and XP.</p>
+              <div class="mini-rule"><b>1</b><span>Understand it in plain English.</span></div>
+              <div class="mini-rule"><b>2</b><span>Run a tiny example.</span></div>
+              <div class="mini-rule"><b>3</b><span>Change the code yourself.</span></div>
+              <div class="mini-rule"><b>4</b><span>Use it in a project.</span></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="projects" class="page">
+        <div class="section-head"><div><h3>Python projects</h3><p>Pick something fun and learn the concepts needed to build it.</p></div><button id="create-project-btn" class="primary-btn">+ Create a project</button></div><div id="my-projects"></div>
+        <div class="filter-row">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="Beginner">Beginner</button>
+          <button class="filter" data-filter="Intermediate">Intermediate</button>
+          <button class="filter" data-filter="Advanced">Advanced</button>
+        </div>
+        <div id="project-grid" class="project-grid large"></div>
+      </section>
+
+      <section id="community" class="page">
+        <div class="community-new-head">
+          <div>
+            <p class="eyebrow">COMMUNITY</p>
+            <h1>Learn with real people</h1>
+            <p>When real members join PYN, their activity, teaching videos, and friend requests can appear here.</p>
+          </div>
+          <button id="upload-video-btn" class="primary-btn">+ Share teaching video</button>
+        </div>
+
+        <div class="community-safety">
+          <strong>Community safety prototype</strong>
+          <span>Community accounts are not connected yet. There are no private messages or live friend requests.</span>
+        </div>
+
+        <div class="community-new-grid">
+          <div>
+            <div class="community-tabs">
+              <button class="community-tab active" data-community-tab="feed">Activity</button>
+              <button class="community-tab" data-community-tab="videos">Teaching videos</button>
+              <button class="community-tab" data-community-tab="requests">Friend requests <span id="request-badge"></span></button>
+            </div>
+            <div id="community-content" class="community-content"></div>
+          </div>
+
+          <aside class="community-new-side">
+            <div class="community-side-card">
+              <h3>Your age group</h3>
+              <strong id="age-band-label">13–15</strong>
+              <p>No friend suggestions are available yet.</p>
+            </div>
+            <div class="community-side-card">
+              <h3>Online now</h3>
+              <div id="online-list"><p>No real users are connected in this prototype yet.</p></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="profile" class="page">
+        <div class="profile-header panel">
+          <div id="big-avatar" class="avatar huge">🧑🏽‍💻</div>
+          <div class="grow">
+            <p class="eyebrow">YOUR PYN PROFILE</p>
+            <h1 id="profile-name">Coder</h1>
+            <p><span class="online-dot"></span> Active now · <span id="profile-rank">Python Starter</span></p>
+            <div class="profile-stats"><div><strong id="profile-xp">0</strong><small>XP</small></div><div><strong id="profile-lessons">0</strong><small>Lessons</small></div><div><strong id="profile-projects">0</strong><small>Projects</small></div></div>
+          </div>
+        </div>
+
+        <div class="two-col profile-cols">
+          <div class="panel">
+            <div class="section-head"><div><h3>Edit avatar</h3><p>Duolingo-style customization, PYN edition.</p></div></div>
+            <div id="avatar-options" class="avatar-options"></div>
+            <h4>PYN Accessories</h4>
+            <div id="accessory-options" class="unlock-grid">
+              <div class="unlock">🔒 <span>Python Hoodie<small>Reach Level 5</small></span></div>
+              <div class="unlock">🔒 <span>Golden Snake<small>Complete 30 lessons</small></span></div>
+              <div class="unlock">🔒 <span>Hacker Glasses<small>Finish 1 project</small></span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="section-head"><div><h3>Your settings</h3><p>Basic prototype controls.</p></div></div>
+            <label>Display name</label>
+            <input id="display-name-input" type="text" maxlength="18" />
+            <label for="theme-select">Preferred color</label><select id="theme-select"><option value="purple">Purple</option><option value="blue">Blue</option><option value="green">Green</option><option value="rose">Rose</option><option value="orange">Orange</option></select><label>Learning level</label>
+            <select id="level-select">
+              <option>I've never coded before</option>
+              <option>I know a little Python</option>
+              <option>I already know the basics</option>
+            </select>
+            <button id="save-profile-btn" class="primary-btn">Save changes</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <button id="close-modal" class="modal-close">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
